@@ -4,7 +4,12 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
-  entry: './src/index.js',
+  entry: './src/client/index.js',
+  output: {
+    filename: 'main.js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
+  },
   devtool: 'inline-source-map',
   devServer: {
     historyApiFallback: true,
@@ -12,14 +17,9 @@ module.exports = {
   plugins: [
     new MiniCssExtractPlugin(),
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: './src/client/index.html',
     }),
   ],
-  output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
-  },
   module: {
     rules: [
       {
